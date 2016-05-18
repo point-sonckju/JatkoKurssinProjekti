@@ -3,6 +3,40 @@
 @{
     ViewBag.Title = "Index";
 }
+@section scripts {
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".näytäProjektitunnitNappi").click(function () {
+                //alert("Nappia painettu!");
+                var projekti_id = $(this).data("projekti_id");
+                //alert(projekti_id);
+                $("#projektit_" + projekti_id).css("display", "block");
+                var url = "/Projektit/HaeTunnit/" + projekti_id;
+                $.ajax(url).done(function (data) {
+                    //alert("Palvelimelta tuli vastaus.");
+
+                    var projektiData = "";
+
+                    for (var i = 0; i < data.length; i++) {
+                        //alert(i+ ": "+data[i].Tunnit);
+                        projektiData += (i+1) + ": "+data[i].Tunnit+" "+data[i].Pvm+"\r\n";
+                    }
+                    $("#projekti_idText_" + projekti_id).html("<pre>"+projektiData+"</pre>");
+  
+                });
+
+                
+            });
+
+        });
+            
+      
+    </script>
+
+
+
+}
 
 <h2>Index</h2>
 
@@ -23,6 +57,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            <a href="#"><span data-projekti_id="@Html.DisplayFor(modelItem => item.Projekti_id)" class="glyphicon glyphicon-plus näytäProjektitunnitNappi"></span></a>
             @Html.DisplayFor(modelItem => item.Projekti_id)
         </td>
         <td>
@@ -33,6 +68,11 @@
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
+    </tr>
+    <tr style="display: none;" id="projektit_@Html.DisplayFor(modelItem => item.Projekti_id)">
+        <td>&nbsp; </td>
+        <td id="projekti_idText_@Html.DisplayFor(modelItem => item.Projekti_id)">Tietoja ladataan...</td>
+
     </tr>
 }
 

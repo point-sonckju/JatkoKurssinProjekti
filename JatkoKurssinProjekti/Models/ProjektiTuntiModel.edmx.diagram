@@ -8,6 +8,11 @@
         <EntityTypeShape EntityType="PointSQLSrv1Model.Henkilot" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PointSQLSrv1Model.Projektit" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PointSQLSrv1Model.Tunnit" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PointSQLSrv1Model.AssetLocation" Width="1.5" PointX="3.375" PointY="7" />
+        <EntityTypeShape EntityType="PointSQLSrv1Model.AssetLocations" Width="1.5" PointX="5.625" PointY="3.875" />
+        <EntityTypeShape EntityType="PointSQLSrv1Model.Assets" Width="1.5" PointX="3.375" PointY="4" />
+        <AssociationConnector Association="PointSQLSrv1Model.FK_AssetLocations_Locations" />
+        <AssociationConnector Association="PointSQLSrv1Model.FK_AssetLocations_Assets" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

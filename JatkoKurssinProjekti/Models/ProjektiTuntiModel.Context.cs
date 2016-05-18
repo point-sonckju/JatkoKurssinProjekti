@@ -28,5 +28,8 @@ namespace JatkoKurssinProjekti.Models
         public virtual DbSet<Henkilot> Henkilot { get; set; }
         public virtual DbSet<Projektit> Projektit { get; set; }
         public virtual DbSet<Tunnit> Tunnit { get; set; }
+        public virtual DbSet<AssetLocation> AssetLocation { get; set; }
+        public virtual DbSet<AssetLocations> AssetLocations { get; set; }
+        public virtual DbSet<Assets> Assets { get; set; }
     }
 }
